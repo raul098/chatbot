@@ -1,0 +1,241 @@
+{
+  "intents": [
+    {
+      "intent": "agradecimiento",
+      "examples": [
+        {
+          "text": "Está bien, gracias"
+        },
+        {
+          "text": "Gracias"
+        }
+      ],
+      "description": "Para agradecer por la información"
+    },
+    {
+      "intent": "bye",
+      "examples": [
+        {
+          "text": "Adios"
+        },
+        {
+          "text": "Hasta luego"
+        }
+      ],
+      "description": "Cuando el usuario se despide"
+    },
+    {
+      "intent": "consulta",
+      "examples": [
+        {
+          "text": "Como puedo ser socio de su empresa?"
+        }
+      ],
+      "description": "Cualquier tipo de consulta"
+    },
+    {
+      "intent": "hello",
+      "examples": [
+        {
+          "text": "Hola"
+        },
+        {
+          "text": "¿Qué tal?"
+        },
+        {
+          "text": "Saludos"
+        }
+      ],
+      "description": "Cuando el usuario saluda"
+    },
+    {
+      "intent": "nombre_del_chatbot",
+      "examples": [
+        {
+          "text": "Como te llamas?"
+        },
+        {
+          "text": "¿Cuál es tu nombre?"
+        }
+      ],
+      "description": "Nombre del chat bot"
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Bienvenido",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hola. ¿Cómo puedo ayudarle?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bienvenido"
+    },
+    {
+      "type": "standard",
+      "title": "En otras cosas",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "No le he entendido. Intente reformular la consulta."
+              },
+              {
+                "text": "¿Puede expresarse con otras palabras? No le he entendido."
+              },
+              {
+                "text": "No entendí el significado."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "En otras cosas",
+      "previous_sibling": "node_7_1598801291497",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Me llamo Lucio, y soy tu asistente virtual."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#nombre_del_chatbot",
+      "dialog_node": "node_1_1598801919374",
+      "previous_sibling": "node_6_1598802597900"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Adiós estimado cliente."
+              },
+              {
+                "text": "Nos vemos estimado cliente."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#bye",
+      "dialog_node": "node_5_1598801602023",
+      "previous_sibling": "node_1_1598801919374"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Para obtener más información de ese tipo, debes ingresar a la página oficial con tus credenciales, sino tienes un usuario puede crearlo sin costo alguno."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#consulta",
+      "dialog_node": "node_6_1598802597900",
+      "previous_sibling": "node_8_1598802857295"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Saludos estimado cliente.\n¿En qué puedo ayudarte?"
+              },
+              {
+                "text": "Hola estimado cliente.\n¿En que puedo ayudarte?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#hello",
+      "dialog_node": "node_7_1598801291497",
+      "previous_sibling": "node_5_1598801602023"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Estoy para servirte. Feliz día."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#agradecimiento",
+      "dialog_node": "node_8_1598802857295",
+      "previous_sibling": "Bienvenido"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Querías decir:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Ninguna de las anteriores"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Querías decir:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "tutorial",
+  "language": "es",
+  "description": ""
+}
